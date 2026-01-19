@@ -99,22 +99,35 @@ nav ul li:hover ul {
 
 /* ===== HERO SECTION ===== */
 .hero {
-    text-align: center;
-    padding: 90px 20px;
-    background: radial-gradient(circle at top, #112c66, #050914);
+  text-align: center;
+  padding: 40px 10px;
+  background: radial-gradient(circle at top, #112c66, #050914);
+  max-width: 700px;
+  margin: 32px auto 0 auto;
+  border-radius: 18px;
 }
-
 .hero h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
 }
-
 .hero p {
-    max-width: 800px;
-    margin: auto;
-    font-size: 18px;
+  max-width: 600px;
+  margin: 12px auto 0 auto;
+  font-size: 1.08rem;
 }
-
+@media (max-width: 700px) {
+  .hero {
+    padding: 24px 4vw;
+    max-width: 98vw;
+  }
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+  .hero p {
+    font-size: 0.98rem;
+  }
+}
 /* ===== MAIN CONTENT ===== */
 .container {
     max-width: 1000px;
@@ -368,6 +381,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
