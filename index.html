@@ -301,22 +301,23 @@ footer {
 
 <div class="image-section">
   <!-- Comment Section: User Feedback -->
-  <section id="comments" style="max-width: 700px; margin: 0 auto 0 auto; background: rgba(255,255,255,0.08); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); padding: 32px 24px;">
-    <div style="background:#174bff; border-radius:12px; padding:24px 12px; max-width:700px; margin:0 auto;">
-      <h2 style="color:#fff; text-align:center; margin-top:0;">Share Your Comments</h2>
-      <p style="color:#fff; text-align:center;">We value your feedback! Please leave your views, opinions, or recommendations about our services below. Your comments help us improve and serve you better.</p>
-      <!-- Disqus Comment Section -->
-      <div id="disqus_thread"></div>
-      <script>
-      var disqus_config = function () {
-        this.page.url = window.location.href;
-        this.page.identifier = window.location.pathname;
-      };
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://skyco-website.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+  comments" style="max-width: 700px; margin: 0 auto 0 auto; background: rgba(255,255,255,0.08); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); padding: 32px 24px;">
+  <div style="background:#174bff; border-radius:12px; padding:12px 6px; max-width:400px; margin:0 auto;">
+    <h2 style="color:#fff; text-align:center; margin-top:0; font-size:1.2em;">Share Your Comments</h2>
+    <p style="color:#fff; text-align:center; font-size:0.95em;">We value your feedback! Please leave your views, opinions, or recommendations about our services below.</p>
+    <!-- Disqus Comment Section -->
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = window.location.pathname;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://skyco-website.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+
       })();
       </script>
       <noscript>
@@ -360,3 +361,4 @@ footer {
 
 </body>
 </html>
+
