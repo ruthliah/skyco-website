@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyco Technology Limited - History</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url('footer1.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url('background2.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 10px 32px;
+  width: 100%;
+  margin: 0;
+  min-height: 0;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  /* text-stroke removed for compatibility */
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-family: "Orbitron", Arial, sans-serif;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: rgb(189, 255, 35);
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+}
+
+nav ul li ul {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #0b185c;
+  display: none;
+  min-width: 220px;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+section {
+  padding: 50px;
+  max-width: 1200px;
+  margin: auto;
+  color: rgb(20, 29, 73);
+}
+
+/* ======== FIXED HORIZONTAL IMAGE ROW (4 SIDE BY SIDE) ======== */
+.image-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Always 4 in a row */
+    gap: 20px;
+    margin-top: 40px;
+    width: 100%;
+    overflow-x: auto; /* allows smooth scroll on small screens */
+}
+
+
+.image-item {
+    background: #092e4d;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.5);
+    text-align: center;
+    min-height: 450px;  /* keeps boxes equal */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.image-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: auto-fill; /* keeps image neat */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+
+.image-item p {
+    color: #fffdfd;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+.video-news-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 videos per row */
+  gap: 20px;
+  width: 100%;
+}
+
+
+.video-news-item {
+  background: rgb(33, 53, 95);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: rgb(254, 255, 255);
+}
+
+.video-news-item iframe {
+  width: 100%;
+  height: 220px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Services Gallery */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 30px;
+}
+
+
+
+.service-item {
+  display: flex;
+  align-items: center;
+  background: rgb(43, 185, 204);
+  padding: 20px;
+  border-radius: 8px;
+  color: black;
+}
+
+.service-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+
+
+footer {
+  background: #01112c;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">Skyco Technology Limited</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="about.html">About Us</a>
+          <ul>
+            <li><a href="about.html#history">History</a></li>
+            <li><a href="about.html#background">Background</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="services.html">Our Services</a>
+          <ul>
+            <li><a href="#capabilities">History of Skyco</a></li>
+            <li><a href="#recent">Our Background History</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="capabilities">
+  <h2>A SHORT BRIEF HISTORY OF SKYCO TECHNOLOGY LIMITED</h2>
+  <p>
+       Skyco Technology Limited was established in 2007 with a strong focus on 
+    developing secure digital systems for governance and electoral processes.
+    Over the years, the company has worked closely with international technology 
+    partners to design customer based identity systems.
+  </p>
+</section>
+
+<section id="News Articles">
+  <h2>Our History: Newspaper Articles of what we did in Lae</h2>
+
+  <div class="image-section">
+
+    <div class="image-item">
+      <img src="image1.jpg" alt="Lae Launch">
+      <p>
+         Prime Minister Peter O’Neil 
+officially launched the Biometric 
+Project in Lae at the Polytechnic 
+College in July 2013. In which the 
+full cabinet and the Government 
+of PNG all at one time came to 
+Lae and during which they 
+witnessed official launching of the 
+Project. Minister for National 
+Planning and Monitoring including 
+other MP’s support  the initiative 
+and the pilot project. Systems Co-Developer Dr. Bruno Lassus from 3M Cogent and SkyCo reps came for the event. 
+Demonstration were done to Members of Parliament and dignitaries about the systems functionality and 
+capabilities. The Pilot Project was the direct fulfillment of the Alotau accord.
+
+      </p>
+    </div>
+
+    <div class="image-item">
+      <img src="image6.jpg" alt="Community Awareness">
+      <p>
+         SkyCo went through some of the Lae’s most notorious communities, Some people did not want 
+to register at all. Our awareness teams and councilors participation did an amazing job in that 
+area of information and awareness to the ward areas. Where they did not go, SkyCo Teams went 
+far out into the most notorious zones and settlements in educating the people. Because the 
+councilors have their boundaries and limitations.  They have little community politics with certain 
+members of the community. 
+ 
+That community taking ownership is proved in the overwhelming community participation and 
+allowing and protecting the enrolment sites. 
+      </p>
+    </div>
+
+    <div class="image-item">
+      <img src="image7.jpg" alt="NID Framework">
+      <p>
+         And as is the case, every new 
+concept any one introduces does 
+not go unchallenged and 
+unchecked, it will face criticism, 
+it is just normal to see and face 
+those challenges and criticisms, 
+this is part of the settling in 
+process of any new concept the 
+Government wants to bring in 
+for the good of the people. And 
+we accept it and today the Government of Papua New Guinea
+boosts and legitimizes NID as compulsory requirement to access 
+government services. A work that deserves recognition here
+its due. For the love of the country and the progress of our nation.
+      </p>
+      <a href="SkyCo_2023_Election_Review.pdf" target="_blank" style="color:#b5f7f7;">
+        Download SkyCo 2023 Election Review PDF
+      </a>
+    </div>
+
+    <div class="image-item">
+      <img src="image17.jpg" alt="Legal Framework">
+      <p>
+         SkyCo seems to be the only Biometric Developer in the Country, and therefore was asked by the Civil 
+Registry and the NID working Committee to assist in the initial documentation of the Legal Framework. 
+SkyCo’s participation contributed in terms of the Biometrics Technology applications and the 
+amendments that include the Biometric Features in Law. Analytical contribution extracting from best 
+practices around the globe. And integrating our PNG practices into the technology aspect in the Civil 
+Registration Process. 
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="videos-news">
+  <h2>Videos & News of First Ever Biometric Registration Rollout In Papua New Guinea</h2>
+  <div class="video-news-container">
+    <div class="video-news-item">
+      <iframe src="https://www.youtube.com/embed/No03UUJOT6o"></iframe>
+      <p>Biometric rollout in Lae.</p>
+    </div>
+    <div class="video-news-item">
+      <iframe src="https://www.youtube.com/embed/0YUeDXSgi2c"></iframe>
+      <p>Secure voting systems update.</p>
+    </div>
+    <div class="video-news-item">
+      <iframe src="https://www.youtube.com/embed/0cfjMUBnEAM"></iframe>
+      <p>Interview on digital governance.</p>
+    
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="services-gallery">
+  <h2>Background: Our Work in Lae</h2>
+  <div class="services-container">
+        <div class="service-item">
+          <img src="image8.jpg" alt="Skyco Chief Engineers">
+          <div>
+            <h3>Skyco Chief Engineers</h3>
+            <p>Skyco Chief Engineers who have hands on experience and have worked closely with our international partners to design and implement biometric voter registration and voting systems.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <img src="image14.jpg" alt="Server Systems Administrator">
+          <div>
+            <h3>Server Systems Administrator</h3>
+            <p>Our Server Systems Administrator from USA who have worked with us when Skyco first got contracted to carry out the first ever biometric population registration in PNG, Lae, Morobe Province 2013.</p>
+          </div>
+        </div>
+    <div class="service-item">
+      <img src="image2.jpg" alt="Biometric Voter Registration">
+      <div>
+        <h3>Skyco Staff in 2013</h3>
+        <p>SkyCo employees in this current exercise, we have a staff strength of 32 strongman including 7 IT 
+personnel’s attached. And another 64 personnel from the 23 respective wards Councils as IT Table 
+operators. In addition, we include the 23 ward Councilors themselves with their 20 CDO’s and 20 church 
+reps and Volunteer Government workers plus 10 people from each 23 ward councils as awareness and 
+security personnel’s. The awareness was carried out by those community representatives
+</p>
+      </div>
+    </div>
+
+        <div class="service-item">
+      <img src="image15.jpg" alt="Electronic Voting Solutions">
+      <div class="service-text">
+        <h3>Configurations and Testing Mobile Hand-held  Verification Equipment Mi15 </h3>
+        <p>The Mi15 is a hand held 
+Machine that does mobile 
+verification on the go at any 
+remote locations. This 
+machine is for verification 
+of any registered person. It 
+works anywhere as it is web 
+based. And can operate 
+under any communication 
+network as long as there is 
+Communication signal and 
+internet access. 
+ 
+Here it is used to configure 
+with the server at the main 
+base in Lae Tutumang to 
+connect to POM base. The 
+purpose is to use them to 
+verify population after 
+registration is fully done. 
+The database in the main 
+base server responds within 
+less than 2 seconds when 
+someone place his finger to 
+verify within the database. </p>
+      </div>
+    </div>
+
+        <div class="service-item">
+      <img src="image10.jpg" alt="Secure Data Capture">
+      <div class="service-text">
+        <h3>Dr Bruno Lassus from 3M Cogent Conducting Training for IT selected person in respective wards assisted by SkyCo Staffs  - 
+Lae District Conference room</h3>
+        <p> Training and test are done in order to ensure that those who will be doing the enrollment does not face 
+problem of delay due to skills or speed or accuracy of data entry. Therefore after the test is done, SkyCo 
+trail the efficient and fast IT person to real time test. And measure against a set time to conclude in the 
+enrollment process. In fact there are many questions to be filled in or answered during the enrollment 
+exercise. </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Skyco Technology Limited
+</footer>
+
+</body>
+</html>

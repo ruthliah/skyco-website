@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyco Technology Services</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ===== LIVE VIDEO BACKGROUND ===== */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
+  object-fit: cover;
+}
+
+/* Dark overlay to make background darker */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.65);
+  z-index: -1;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+/* ===== HEADER ===== */
+header {
+  padding: 40px 20px;
+  text-align: center;
+  background: hsla(0, 0%, 0%, 0.702);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #008cff;
+  font-family: "Orbitron", Arial, sans-serif;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.main-container {
+  display: grid;
+  grid-template-columns: 68% 32%;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+/* ===== LEFT SIDE (BOXES) ===== */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* TOP 4 BOXES */
+.top-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.box {
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(0, 234, 255, 0.4);
+}
+
+.box img {
+  width: 100%;
+  height: 150px;
+  object-fit: auto fill;
+  border-radius: 8px;
+}
+
+/* MIDDLE TEXT SECTION */
+.middle-text {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.middle-text h2 {
+  color: #00eaff;
+}
+
+/* BOTTOM 3 BOXES */
+.bottom-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* ===== RIGHT SIDE (VIDEOS) ===== */
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+  margin-top: 120px; /* Moves videos down to align with image containers */
+}
+
+.video-box {
+  background: rgba(255,255,255,0.15);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #08162f;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-links a {
+  color: #00eaff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop id="bg-video">
+  <source src="skyco5.mp4" type="video/mp4">
+</video>
+
+<header>
+  <div class="navbar">
+    <div class="logo">SKYCO TECHNOLOGY LIMITED</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Our Services</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="main-container">
+
+<!-- LEFT SIDE -->
+<div class="left-section">
+
+<h2 style="color:#00eaff;">International Collaboration & Partnership with Government</h2>
+
+<div class="top-boxes">
+  <div class="box">
+    <img src="DJAG2.jpg">
+    <p>Skyco in Partnership with Department of Justice & Attorney General.
+      Interacting with International Collaborators from Israel. </p>
+  </div>
+  <div class="box">
+    <img src="DJAG3.jpg">
+    <p>Site Visit to Correctional Services</p>
+  </div>
+  <div class="box">
+    <img src="DJAG4.jpg">
+    <p>Skyco doing Presentation at Parliamentary State Function Room</p>
+  </div>
+  <div class="box">
+    <img src="DJAG5.jpg">
+    <p>Skyco CEO and MD visting International Partner, Cogent Systems
+      Beyond Comparsion in 2009. Standing Left, Dr Bruno Lassus, Deputy
+    Vice Presidant. Standing Right is the Founder and President Mr.Ming
+  </p>
+  </div>
+</div>
+
+<div class="middle-text">
+  <h2>Our Core Services</h2>
+  <p>
+    Skyco Technology Limited delivers cutting-edge digital solutions including
+    biometric systems, secure data management, electronic voting platforms,
+    and digital governance tools. We work with globally accredited partners
+    to ensure reliability, transparency, and trust in all our systems.
+  </p>
+</div>
+
+<div class="bottom-boxes">
+  <div class="box">
+    <img src="image4.jpg">
+    <p><strong>VSAT Services & Installations</strong><br>
+    Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.
+    </p>
+  </div>
+  <div class="box">
+    <img src="webdev.jpg">
+    <p><strong>Web Development</strong><br>
+    Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.
+    </p>
+  </div>
+  <div class="box">
+    <img src="project.jpg" alt="Project Management">
+    <p><strong>Project Management</strong><br>
+    Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.
+    </p>
+  </div>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE (YOUTUBE VIDEOS) -->
+<div class="right-section">
+  <div class="video-box">
+    <iframe width="100%" height="150"
+       src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      
+    </iframe>
+  </div>
+
+  <div class="video-box">
+    <iframe width="100" height="150" src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <div class="video-box">
+    <iframe width="100" height="150" src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <div class="video-box">
+   <iframe width="100" height="150" src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+<footer>
+  <h3>Contact Us</h3>
+  <div class="footer-links">
+    <a href="mailto:info@skyco.com"><i class="fa fa-envelope"></i> Email</a>
+    <a href="https://wa.me/675XXXXXXXX"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://linkedin.com/company/skyco-technology"><i class="fa fa-linkedin"></i> LinkedIn</a>
+  </div>
+  <p>&copy; 2026 Skyco Technology Limited</p>
+</footer>
+
+</body>
+</html>
