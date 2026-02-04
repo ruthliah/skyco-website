@@ -111,12 +111,9 @@ nav ul li a:hover {
   box-shadow: 0 0 10px rgba(0, 234, 255, 0.35);
 }
 
-/* TOP cards: keep centered like before */
-.top-boxes .box {
-  text-align: center;
-}
+/* TOP cards: centered */
+.top-boxes .box { text-align: center; }
 
-/* TOP IMAGES: keep as-is (do not touch) */
 .top-boxes .box img.zoomable {
   width: 100%;
   height: 180px;
@@ -134,7 +131,6 @@ nav ul li a:hover {
   filter: brightness(1.05);
 }
 
-/* TOP text */
 .top-boxes .box p {
   margin: 10px 0 0 0;
   font-size: 14px;
@@ -162,20 +158,24 @@ nav ul li a:hover {
   gap: 15px;
 }
 
-/* Compact but readable: image left, text right */
+/* ✅ Professional layout:
+   - Keep each card tidy
+   - Image on top (bigger)
+   - Text below with clean spacing (no squeezing)
+   - Consistent font sizes and line-height
+*/
 .bottom-boxes .box {
-  padding: 12px;
+  padding: 14px;
   text-align: left;
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* ✅ Increased image size a bit (more readable) */
+/* Image bigger (you said images are fine) */
 .bottom-boxes .box img.zoomable {
-  width: 150px;      /* was 110px */
-  height: 105px;     /* was 80px */
-  flex: 0 0 150px;
+  width: 100%;
+  height: 140px;          /* clean, consistent */
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
@@ -189,17 +189,21 @@ nav ul li a:hover {
   filter: brightness(1.05);
 }
 
-/* ✅ Slightly larger text for readability */
+/* Text: neat and readable */
 .bottom-boxes .box p {
   margin: 0;
-  font-size: 14.5px;   /* was 13.5px */
-  line-height: 1.5;
+  font-size: 14.5px;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.92);
 }
 
+/* Title styling */
 .bottom-boxes .box p strong {
+  display: block;
   color: #00eaff;
-  font-size: 15px;
+  font-size: 16px;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
@@ -211,12 +215,9 @@ nav ul li a:hover {
   margin-top: 120px;
 }
 
-/* ✅ Make video cards NOT super wide:
-   - set a max-width so they look professional
-   - keep them aligned to the right */
 .video-box {
   width: 100%;
-  max-width: 340px;           /* keeps them from looking too wide */
+  max-width: 340px;
   background: rgba(255, 255, 255, 0.15);
   padding: 10px;
   border-radius: 12px;
@@ -230,13 +231,12 @@ nav ul li a:hover {
   filter: brightness(1.05);
 }
 
-/* ✅ Slightly smaller height for a cleaner look */
 .video-box iframe {
   width: 100%;
-  height: 135px;              /* was 150px */
+  height: 135px;
   border-radius: 10px;
   border: 0;
-  pointer-events: none;       /* box click opens modal */
+  pointer-events: none;
 }
 
 /* ===== FOOTER ===== */
@@ -347,7 +347,7 @@ footer {
     margin-top: 0;
   }
   .video-box {
-    max-width: 520px; /* allow wider on mobile */
+    max-width: 520px;
   }
   .top-boxes {
     grid-template-columns: repeat(2, 1fr);
@@ -363,14 +363,6 @@ footer {
   }
   .logo {
     font-size: 26px;
-  }
-  .bottom-boxes .box {
-    flex-direction: column;
-  }
-  .bottom-boxes .box img.zoomable {
-    width: 100%;
-    height: 170px;
-    flex: initial;
   }
 }
 </style>
@@ -446,7 +438,7 @@ footer {
       <div class="box">
         <img class="zoomable" src="image4.jpg" alt="VSAT Services"
              data-caption="VSAT Services & Installations — Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.">
-        <p><strong>VSAT Services & Installations</strong><br>
+        <p><strong>VSAT Services & Installations</strong>
           Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.
         </p>
       </div>
@@ -454,7 +446,7 @@ footer {
       <div class="box">
         <img class="zoomable" src="webdev.jpg" alt="Web Development"
              data-caption="Web Development — Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.">
-        <p><strong>Web Development</strong><br>
+        <p><strong>Web Development</strong>
           Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.
         </p>
       </div>
@@ -462,7 +454,7 @@ footer {
       <div class="box">
         <img class="zoomable" src="project.jpg" alt="Project Management"
              data-caption="Project Management — Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.">
-        <p><strong>Project Management</strong><br>
+        <p><strong>Project Management</strong>
           Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.
         </p>
       </div>
