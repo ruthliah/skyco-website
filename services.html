@@ -19,7 +19,7 @@
   object-fit: cover;
 }
 
-/* Dark overlay to make background darker */
+/* Dark overlay */
 body::before {
   content: "";
   position: fixed;
@@ -82,14 +82,14 @@ nav ul li a:hover {
 .main-container {
   display: grid;
   grid-template-columns: 68% 32%;
-  gap: 40px;
+  gap: 34px;
   padding: 40px;
   max-width: 1200px;
   margin: auto;
   align-items: flex-start;
 }
 
-/* ===== LEFT SIDE (BOXES) ===== */
+/* ===== LEFT SIDE ===== */
 .left-section {
   display: flex;
   flex-direction: column;
@@ -107,12 +107,16 @@ nav ul li a:hover {
   background: rgba(255, 255, 255, 0.15);
   padding: 15px;
   border-radius: 12px;
-  text-align: center;
   backdrop-filter: blur(5px);
   box-shadow: 0 0 10px rgba(0, 234, 255, 0.35);
 }
 
-/* TOP IMAGES: keep as-is (do not change) */
+/* TOP cards: keep centered like before */
+.top-boxes .box {
+  text-align: center;
+}
+
+/* TOP IMAGES: keep as-is (do not touch) */
 .top-boxes .box img.zoomable {
   width: 100%;
   height: 180px;
@@ -130,7 +134,15 @@ nav ul li a:hover {
   filter: brightness(1.05);
 }
 
-/* ===== MIDDLE TEXT SECTION ===== */
+/* TOP text */
+.top-boxes .box p {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ===== MIDDLE TEXT ===== */
 .middle-text {
   background: rgba(255, 255, 255, 0.1);
   padding: 20px;
@@ -143,34 +155,28 @@ nav ul li a:hover {
   margin-top: 0;
 }
 
-/* ===== BOTTOM 3 BOXES (NEW ADJUSTMENT) =====
-   You asked:
-   - Reduce container size (smaller cards)
-   - Image fits perfectly inside small container
-   - Text flows left-to-right inside the container (not centered)
-   - Do not touch top 4 images
-*/
+/* ===== BOTTOM 3 BOXES ===== */
 .bottom-boxes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 
-/* Turn bottom cards into a compact "media + text" layout */
+/* Compact but readable: image left, text right */
 .bottom-boxes .box {
-  padding: 12px;                 /* smaller than before */
-  text-align: left;              /* left-to-right text */
-  display: flex;                 /* image + text side-by-side */
-  gap: 12px;
+  padding: 12px;
+  text-align: left;
+  display: flex;
+  gap: 14px;
   align-items: flex-start;
 }
 
-/* Small image thumbnail on the left */
+/* ✅ Increased image size a bit (more readable) */
 .bottom-boxes .box img.zoomable {
-  width: 110px;                  /* small thumbnail */
-  height: 80px;                  /* small thumbnail */
-  flex: 0 0 110px;
-  object-fit: cover;             /* fills thumbnail nicely */
+  width: 150px;      /* was 110px */
+  height: 105px;     /* was 80px */
+  flex: 0 0 150px;
+  object-fit: cover;
   object-position: center;
   border-radius: 10px;
   cursor: pointer;
@@ -179,42 +185,38 @@ nav ul li a:hover {
 }
 
 .bottom-boxes .box img.zoomable:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   filter: brightness(1.05);
 }
 
-/* Text content on the right */
+/* ✅ Slightly larger text for readability */
 .bottom-boxes .box p {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.45;
+  font-size: 14.5px;   /* was 13.5px */
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* Make the heading in the text stand out a bit */
 .bottom-boxes .box p strong {
   color: #00eaff;
-}
-
-/* Also keep top box paragraph style (center is fine there) */
-.top-boxes .box p {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
 .right-section {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
   align-items: flex-end;
   margin-top: 120px;
 }
 
+/* ✅ Make video cards NOT super wide:
+   - set a max-width so they look professional
+   - keep them aligned to the right */
 .video-box {
   width: 100%;
+  max-width: 340px;           /* keeps them from looking too wide */
   background: rgba(255, 255, 255, 0.15);
   padding: 10px;
   border-radius: 12px;
@@ -228,13 +230,13 @@ nav ul li a:hover {
   filter: brightness(1.05);
 }
 
-/* Disable pointer events on the small embedded iframes so box click opens modal */
+/* ✅ Slightly smaller height for a cleaner look */
 .video-box iframe {
   width: 100%;
-  height: 150px;
+  height: 135px;              /* was 150px */
   border-radius: 10px;
   border: 0;
-  pointer-events: none;
+  pointer-events: none;       /* box click opens modal */
 }
 
 /* ===== FOOTER ===== */
@@ -257,7 +259,7 @@ footer {
   text-decoration: underline;
 }
 
-/* ===== FULLSCREEN MODAL (IMAGES + VIDEOS) ===== */
+/* ===== FULLSCREEN MODAL ===== */
 .media-modal {
   position: fixed;
   inset: 0;
@@ -292,7 +294,6 @@ footer {
   justify-content: center;
 }
 
-/* Fullscreen image sizing: show whole image */
 .media-stage img {
   max-width: 100%;
   max-height: 70vh;
@@ -300,7 +301,6 @@ footer {
   display: block;
 }
 
-/* Fullscreen video sizing */
 .media-stage iframe {
   width: 100%;
   height: min(70vh, 650px);
@@ -317,7 +317,6 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Close button */
 .media-close {
   position: fixed;
   top: 14px;
@@ -347,14 +346,14 @@ footer {
     align-items: stretch;
     margin-top: 0;
   }
+  .video-box {
+    max-width: 520px; /* allow wider on mobile */
+  }
   .top-boxes {
     grid-template-columns: repeat(2, 1fr);
   }
   .bottom-boxes {
     grid-template-columns: 1fr;
-  }
-  .bottom-boxes .box {
-    align-items: center;
   }
 }
 
@@ -367,13 +366,11 @@ footer {
   }
   .bottom-boxes .box {
     flex-direction: column;
-    text-align: left;
   }
   .bottom-boxes .box img.zoomable {
     width: 100%;
-    height: 150px;
+    height: 170px;
     flex: initial;
-    object-fit: cover;
   }
 }
 </style>
@@ -445,7 +442,6 @@ footer {
       </p>
     </div>
 
-    <!-- BOTTOM 3 BOXES (compact, original-sized vibe but polished + left-to-right) -->
     <div class="bottom-boxes">
       <div class="box">
         <img class="zoomable" src="image4.jpg" alt="VSAT Services"
@@ -567,7 +563,7 @@ footer {
     document.body.style.overflow = "";
   }
 
-  /* IMAGE CLICK → fullscreen + caption */
+  // IMAGE CLICK → fullscreen + caption
   document.querySelectorAll("img.zoomable").forEach((img) => {
     img.addEventListener("click", () => {
       const src = img.getAttribute("src");
@@ -583,7 +579,7 @@ footer {
     });
   });
 
-  /* VIDEO BOX CLICK → fullscreen iframe */
+  // VIDEO BOX CLICK → fullscreen iframe
   document.querySelectorAll(".video-box").forEach((box) => {
     box.addEventListener("click", () => {
       const src = box.getAttribute("data-src");
@@ -600,16 +596,10 @@ footer {
     });
   });
 
-  /* Close actions */
+  // Close actions
   closeBtn.addEventListener("click", closeModal);
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
-  });
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 </script>
 
 </body>
