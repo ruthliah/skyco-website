@@ -112,22 +112,20 @@ nav ul li a:hover {
   box-shadow: 0 0 10px rgba(0, 234, 255, 0.35);
 }
 
-/* IMPORTANT CHANGE:
-   Use object-fit: contain so the entire image is visible (no cropping).
-   Add a dark background behind the image so blank space looks nice. */
-.box img.zoomable {
+/* --------- TOP IMAGES (show full image, no cropping) --------- */
+.top-boxes .box img.zoomable {
   width: 100%;
-  height: 180px;              /* slightly taller so details are easier to see */
-  object-fit: contain;        /* show whole image */
-  object-position: center;    /* keep centered */
-  background: rgba(0, 0, 0, 0.35); /* fills the empty bars nicely */
+  height: 180px;                /* as per your last request for the TOP 4 */
+  object-fit: contain;          /* show whole image */
+  object-position: center;
+  background: rgba(0, 0, 0, 0.35);
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.2s ease;
   display: block;
 }
 
-.box img.zoomable:hover {
+.top-boxes .box img.zoomable:hover {
   transform: scale(1.02);
   filter: brightness(1.05);
 }
@@ -158,6 +156,25 @@ nav ul li a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
+}
+
+/* --------- BOTTOM IMAGES (bring back original look/size) ---------
+   This matches your original: height 150px, and no "contain bars" look.
+   Still clickable for fullscreen modal. */
+.bottom-boxes .box img.zoomable {
+  width: 100%;
+  height: 150px;        /* original */
+  object-fit: cover;    /* original look (fills the box) */
+  object-position: center;
+  border-radius: 8px;   /* original-ish */
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  display: block;
+}
+
+.bottom-boxes .box img.zoomable:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
