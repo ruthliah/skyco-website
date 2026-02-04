@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Skyco Technology Services</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <style>
 /* ===== LIVE VIDEO BACKGROUND ===== */
@@ -23,17 +23,14 @@
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(10, 10, 10, 0.65);
   z-index: -1;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
   color: white;
 }
 
@@ -78,7 +75,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ===== MAIN LAYOUT ===== */
@@ -107,7 +104,7 @@ nav ul li a:hover {
 }
 
 .box {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   padding: 15px;
   border-radius: 12px;
   text-align: center;
@@ -115,11 +112,15 @@ nav ul li a:hover {
   box-shadow: 0 0 10px rgba(0, 234, 255, 0.35);
 }
 
-/* Make the whole image area feel clickable */
+/* IMPORTANT CHANGE:
+   Use object-fit: contain so the entire image is visible (no cropping).
+   Add a dark background behind the image so blank space looks nice. */
 .box img.zoomable {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  height: 180px;              /* slightly taller so details are easier to see */
+  object-fit: contain;        /* show whole image */
+  object-position: center;    /* keep centered */
+  background: rgba(0, 0, 0, 0.35); /* fills the empty bars nicely */
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.2s ease;
@@ -136,12 +137,12 @@ nav ul li a:hover {
   margin: 10px 0 0 0;
   font-size: 14px;
   line-height: 1.45;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* MIDDLE TEXT SECTION */
 .middle-text {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 234, 255, 0.18);
@@ -165,12 +166,12 @@ nav ul li a:hover {
   flex-direction: column;
   gap: 15px;
   align-items: flex-end;
-  margin-top: 120px; /* Moves videos down to align with image containers */
+  margin-top: 120px;
 }
 
 .video-box {
   width: 100%;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 234, 255, 0.25);
@@ -183,9 +184,7 @@ nav ul li a:hover {
   filter: brightness(1.05);
 }
 
-/* IMPORTANT:
-   We disable pointer events on the small embedded iframes so the container click always opens the modal.
-   The fullscreen modal iframe will work normally (controls clickable). */
+/* Disable pointer events on the small embedded iframes so box click opens modal */
 .video-box iframe {
   width: 100%;
   height: 150px;
@@ -218,7 +217,7 @@ footer {
 .media-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   display: none;
   z-index: 9999;
   padding: 20px;
@@ -236,10 +235,10 @@ footer {
   background: rgba(10, 15, 20, 0.98);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   display: grid;
   grid-template-rows: auto 1fr;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .media-stage {
@@ -249,7 +248,7 @@ footer {
   justify-content: center;
 }
 
-/* Fullscreen image sizing */
+/* Fullscreen image sizing: show whole image */
 .media-stage img {
   max-width: 100%;
   max-height: 70vh;
@@ -267,11 +266,11 @@ footer {
 
 .media-text {
   padding: 16px 18px;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 16px;
   line-height: 1.6;
   overflow: auto;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Close button */
@@ -283,7 +282,7 @@ footer {
   height: 46px;
   border-radius: 999px;
   border: 0;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
   font-size: 30px;
   line-height: 46px;
@@ -292,7 +291,7 @@ footer {
 }
 
 .media-close:hover {
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -326,7 +325,7 @@ footer {
 <body>
 
 <video autoplay muted loop id="bg-video">
-  <source src="skyco5.mp4" type="video/mp4">
+  <source src="skyco5.mp4" type="video/mp4" />
 </video>
 
 <header>
@@ -419,7 +418,9 @@ footer {
 
   <!-- RIGHT SIDE (YOUTUBE VIDEOS) -->
   <div class="right-section">
-    <div class="video-box" data-title="Skyco Technology Video 1"
+
+    <div class="video-box"
+         data-title="Skyco Technology Video 1"
          data-src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb">
       <iframe
         src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb"
@@ -429,7 +430,8 @@ footer {
         allowfullscreen></iframe>
     </div>
 
-    <div class="video-box" data-title="Skyco Technology Video 2"
+    <div class="video-box"
+         data-title="Skyco Technology Video 2"
          data-src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg">
       <iframe
         src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg"
@@ -439,7 +441,8 @@ footer {
         allowfullscreen></iframe>
     </div>
 
-    <div class="video-box" data-title="Skyco Technology Video 3"
+    <div class="video-box"
+         data-title="Skyco Technology Video 3"
          data-src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj">
       <iframe
         src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj"
@@ -449,7 +452,8 @@ footer {
         allowfullscreen></iframe>
     </div>
 
-    <div class="video-box" data-title="Skyco Technology Video 4"
+    <div class="video-box"
+         data-title="Skyco Technology Video 4"
          data-src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL">
       <iframe
         src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL"
@@ -458,6 +462,7 @@ footer {
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen></iframe>
     </div>
+
   </div>
 
 </div>
@@ -472,7 +477,7 @@ footer {
   <p>&copy; 2026 Skyco Technology Limited</p>
 </footer>
 
-<!-- FULLSCREEN MODAL (add once at the bottom of the page) -->
+<!-- FULLSCREEN MODAL -->
 <div class="media-modal" id="mediaModal" aria-hidden="true">
   <button class="media-close" id="mediaClose" aria-label="Close">&times;</button>
 
@@ -504,8 +509,8 @@ footer {
     document.body.style.overflow = "";
   }
 
-  // IMAGE CLICK → fullscreen + caption (uses data-caption, fallback to <p>)
-  document.querySelectorAll("img.zoomable").forEach(img => {
+  // IMAGE CLICK → fullscreen + caption
+  document.querySelectorAll("img.zoomable").forEach((img) => {
     img.addEventListener("click", () => {
       const src = img.getAttribute("src");
       const caption =
@@ -521,7 +526,7 @@ footer {
   });
 
   // VIDEO BOX CLICK → fullscreen iframe
-  document.querySelectorAll(".video-box").forEach(box => {
+  document.querySelectorAll(".video-box").forEach((box) => {
     box.addEventListener("click", () => {
       const src = box.getAttribute("data-src");
       const title = box.getAttribute("data-title") || "Video";
