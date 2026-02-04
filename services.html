@@ -48,10 +48,12 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 40px;
+  font-size: 34px;
   font-weight: 900;
   letter-spacing: 2px;
   color: #00eaff;
@@ -63,6 +65,8 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 nav ul li a {
@@ -70,6 +74,11 @@ nav ul li a {
   text-decoration: none;
   padding: 8px 12px;
   font-weight: bold;
+  border-radius: 8px;
+}
+
+nav ul li a:hover {
+  background: rgba(255,255,255,0.08);
 }
 
 /* ===== MAIN LAYOUT ===== */
@@ -100,28 +109,47 @@ nav ul li a {
 .box {
   background: rgba(255,255,255,0.15);
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 10px rgba(0, 234, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 234, 255, 0.35);
 }
 
-.box img {
+/* Make the whole image area feel clickable */
+.box img.zoomable {
   width: 100%;
-  height: 150px;
-  object-fit: auto fill;
-  border-radius: 8px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  display: block;
+}
+
+.box img.zoomable:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Text inside boxes */
+.box p {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.92);
 }
 
 /* MIDDLE TEXT SECTION */
 .middle-text {
   background: rgba(255,255,255,0.1);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 234, 255, 0.18);
 }
 
 .middle-text h2 {
   color: #00eaff;
+  margin-top: 0;
 }
 
 /* BOTTOM 3 BOXES */
@@ -132,7 +160,6 @@ nav ul li a {
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
-
 .right-section {
   display: flex;
   flex-direction: column;
@@ -142,15 +169,29 @@ nav ul li a {
 }
 
 .video-box {
+  width: 100%;
   background: rgba(255,255,255,0.15);
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 234, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+.video-box:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* IMPORTANT:
+   We disable pointer events on the small embedded iframes so the container click always opens the modal.
+   The fullscreen modal iframe will work normally (controls clickable). */
 .video-box iframe {
   width: 100%;
   height: 150px;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: 0;
+  pointer-events: none;
 }
 
 /* ===== FOOTER ===== */
@@ -167,6 +208,117 @@ footer {
   text-decoration: none;
   margin: 0 15px;
   font-weight: bold;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* ===== FULLSCREEN MODAL (IMAGES + VIDEOS) ===== */
+.media-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.media-modal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-content {
+  width: min(1100px, 95vw);
+  max-height: 92vh;
+  background: rgba(10, 15, 20, 0.98);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.media-stage {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fullscreen image sizing */
+.media-stage img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Fullscreen video sizing */
+.media-stage iframe {
+  width: 100%;
+  height: min(70vh, 650px);
+  border: 0;
+  display: block;
+}
+
+.media-text {
+  padding: 16px 18px;
+  color: rgba(255,255,255,0.92);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow: auto;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Close button */
+.media-close {
+  position: fixed;
+  top: 14px;
+  right: 18px;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 30px;
+  line-height: 46px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.media-close:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+  .right-section {
+    align-items: stretch;
+    margin-top: 0;
+  }
+  .top-boxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bottom-boxes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .top-boxes {
+    grid-template-columns: 1fr;
+  }
+  .logo {
+    font-size: 26px;
+  }
 }
 </style>
 </head>
@@ -192,88 +344,123 @@ footer {
 
 <div class="main-container">
 
-<!-- LEFT SIDE -->
-<div class="left-section">
+  <!-- LEFT SIDE -->
+  <div class="left-section">
 
-<h2 style="color:#00eaff;">International Collaboration & Partnership with Government</h2>
+    <h2 style="color:#00eaff;">International Collaboration & Partnership with Government</h2>
 
-<div class="top-boxes">
-  <div class="box">
-    <img src="DJAG2.jpg">
-    <p>Skyco in Partnership with Department of Justice & Attorney General.
-      Interacting with International Collaborators from Israel in 2019. </p>
+    <div class="top-boxes">
+      <div class="box">
+        <img class="zoomable" src="DJAG2.jpg" alt="DJAG2"
+             data-caption="Skyco in Partnership with Department of Justice & Attorney General. Interacting with International Collaborators from Israel in 2019.">
+        <p>Skyco in Partnership with Department of Justice & Attorney General.
+          Interacting with International Collaborators from Israel in 2019.</p>
+      </div>
+
+      <div class="box">
+        <img class="zoomable" src="DJAG3.jpg" alt="DJAG3"
+             data-caption="2019, Site Visit to Correctional Services Bomana Prison.">
+        <p>2019, Site Visit to Correctional Services Bomana Prison.</p>
+      </div>
+
+      <div class="box">
+        <img class="zoomable" src="DJAG4.jpg" alt="DJAG4"
+             data-caption="Skyco doing Presentation at Parliamentary State Function Room in 2011.">
+        <p>Skyco doing Presentation at Parliamentary State Function Room in 2011.</p>
+      </div>
+
+      <div class="box">
+        <img class="zoomable" src="DJAG5.jpg" alt="DJAG5"
+             data-caption="Skyco CEO and MD visiting International Partner, Cogent Systems Beyond Comparison in 2009 in Pasadena, California, USA. Standing Left, Dr Bruno Lassus, Deputy Vice President. Standing Right is the Founder and President Mr. Ming.">
+        <p>Skyco CEO and MD visting International Partner, Cogent Systems
+          Beyond Comparison in 2009 in Pasadena, California, USA. Standing Left, Dr Bruno Lassus, Deputy
+          Vice President. Standing Right is the Founder and President Mr.Ming
+        </p>
+      </div>
+    </div>
+
+    <div class="middle-text">
+      <h2>Our Core Services</h2>
+      <p>
+        Skyco Technology Limited delivers cutting-edge digital solutions including
+        biometric systems, secure data management, electronic voting platforms,
+        and digital governance tools. We work with globally accredited partners
+        to ensure reliability, transparency, and trust in all our systems.
+      </p>
+    </div>
+
+    <div class="bottom-boxes">
+      <div class="box">
+        <img class="zoomable" src="image4.jpg" alt="VSAT Services"
+             data-caption="VSAT Services & Installations — Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.">
+        <p><strong>VSAT Services & Installations</strong><br>
+          Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.
+        </p>
+      </div>
+
+      <div class="box">
+        <img class="zoomable" src="webdev.jpg" alt="Web Development"
+             data-caption="Web Development — Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.">
+        <p><strong>Web Development</strong><br>
+          Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.
+        </p>
+      </div>
+
+      <div class="box">
+        <img class="zoomable" src="project.jpg" alt="Project Management"
+             data-caption="Project Management — Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.">
+        <p><strong>Project Management</strong><br>
+          Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.
+        </p>
+      </div>
+    </div>
+
   </div>
-  <div class="box">
-    <img src="DJAG3.jpg">
-    <p>2019,
-      Site Visit to Correctional Services Bomana Prison.</p>
+
+  <!-- RIGHT SIDE (YOUTUBE VIDEOS) -->
+  <div class="right-section">
+    <div class="video-box" data-title="Skyco Technology Video 1"
+         data-src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb">
+      <iframe
+        src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb"
+        title="Skyco Technology Video 1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="video-box" data-title="Skyco Technology Video 2"
+         data-src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg">
+      <iframe
+        src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg"
+        title="Skyco Technology Video 2"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="video-box" data-title="Skyco Technology Video 3"
+         data-src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj">
+      <iframe
+        src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj"
+        title="Skyco Technology Video 3"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="video-box" data-title="Skyco Technology Video 4"
+         data-src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL">
+      <iframe
+        src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL"
+        title="Skyco Technology Video 4"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
   </div>
-  <div class="box">
-    <img src="DJAG4.jpg">
-    <p>Skyco doing Presentation at Parliamentary State Function Room in 2011.</p>
-  </div>
-  <div class="box">
-    <img src="DJAG5.jpg">
-    <p>Skyco CEO and MD visting International Partner, Cogent Systems
-      Beyond Comparison in 2009 in Pasadena, California, USA. Standing Left, Dr Bruno Lassus, Deputy
-    Vice President. Standing Right is the Founder and President Mr.Ming
-  </p>
-  </div>
+
 </div>
-
-<div class="middle-text">
-  <h2>Our Core Services</h2>
-  <p>
-    Skyco Technology Limited delivers cutting-edge digital solutions including
-    biometric systems, secure data management, electronic voting platforms,
-    and digital governance tools. We work with globally accredited partners
-    to ensure reliability, transparency, and trust in all our systems.
-  </p>
-</div>
-
-<div class="bottom-boxes">
-  <div class="box">
-    <img src="image4.jpg">
-    <p><strong>VSAT Services & Installations</strong><br>
-    Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.
-    </p>
-  </div>
-  <div class="box">
-    <img src="webdev.jpg">
-    <p><strong>Web Development</strong><br>
-    Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.
-    </p>
-  </div>
-  <div class="box">
-    <img src="project.jpg" alt="Project Management">
-    <p><strong>Project Management</strong><br>
-    Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.
-    </p>
-  </div>
-</div>
-
-</div>
-
-<!-- RIGHT SIDE (YOUTUBE VIDEOS) -->
-<div class="right-section">
-  <div class="video-box">
-    <iframe width="100%" height="150"
-       src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      
-    </iframe>
-  </div>
-
-  <div class="video-box">
-    <iframe width="100" height="150" src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-  <div class="video-box">
-    <iframe width="100" height="150" src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-  <div class="video-box">
-   <iframe width="100" height="150" src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-</div>
-
 
 <footer>
   <h3>Contact Us</h3>
@@ -285,11 +472,82 @@ footer {
   <p>&copy; 2026 Skyco Technology Limited</p>
 </footer>
 
+<!-- FULLSCREEN MODAL (add once at the bottom of the page) -->
+<div class="media-modal" id="mediaModal" aria-hidden="true">
+  <button class="media-close" id="mediaClose" aria-label="Close">&times;</button>
+
+  <div class="media-content" role="dialog" aria-modal="true">
+    <div class="media-stage" id="mediaStage"></div>
+    <div class="media-text" id="mediaText"></div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("mediaModal");
+  const stage = document.getElementById("mediaStage");
+  const text = document.getElementById("mediaText");
+  const closeBtn = document.getElementById("mediaClose");
+
+  function openModal({ html, caption }) {
+    stage.innerHTML = html;
+    text.textContent = caption || "";
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    stage.innerHTML = "";
+    text.textContent = "";
+    document.body.style.overflow = "";
+  }
+
+  // IMAGE CLICK → fullscreen + caption (uses data-caption, fallback to <p>)
+  document.querySelectorAll("img.zoomable").forEach(img => {
+    img.addEventListener("click", () => {
+      const src = img.getAttribute("src");
+      const caption =
+        img.getAttribute("data-caption") ||
+        img.closest(".box")?.querySelector("p")?.innerText ||
+        "";
+
+      openModal({
+        html: `<img src="${src}" alt="">`,
+        caption
+      });
+    });
+  });
+
+  // VIDEO BOX CLICK → fullscreen iframe
+  document.querySelectorAll(".video-box").forEach(box => {
+    box.addEventListener("click", () => {
+      const src = box.getAttribute("data-src");
+      const title = box.getAttribute("data-title") || "Video";
+      if (!src) return;
+
+      openModal({
+        html: `<iframe src="${src}" title="${title}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>`,
+        caption: title
+      });
+    });
+  });
+
+  // Close actions
+  closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
