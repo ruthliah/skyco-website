@@ -255,7 +255,7 @@ footer {
   position: relative;
 }
 
-/* ✅ Counter badge (e.g., 3/11) */
+/* Counter badge */
 .media-counter {
   position: absolute;
   top: 14px;
@@ -496,9 +496,16 @@ footer {
 <footer>
   <h3>Contact Us</h3>
   <div class="footer-links">
-    <a href="mailto:skycotechnology667@gamil.com"><i class="fa fa-envelope"></i> Email</a>
-    <a href="https://wa.me/67571237680"><i class="fa fa-whatsapp"></i> WhatsApp</a>
-    <a href="https://linkedin.com/company/skyco-technology"><i class="fa fa-linkedin"></i> LinkedIn</a>
+    <!-- ✅ Updated email: opens user's email app -->
+    <a href="mailto:skycotechnology667@gmail.com"><i class="fa fa-envelope"></i> skycotechnology667@gmail.com</a>
+
+    <!-- WhatsApp left as placeholder -->
+    <a href="https://wa.me/675XXXXXXXX"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+
+    <!-- ✅ Updated LinkedIn: opens your profile -->
+    <a href="https://www.linkedin.com/in/ruthleey-kile-863966211" target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-linkedin"></i> LinkedIn
+    </a>
   </div>
   <p>&copy; 2026 Skyco Technology Limited</p>
 </footer>
@@ -550,8 +557,6 @@ footer {
     }
 
     text.textContent = item.text;
-
-    // ✅ Counter like 3/11
     counter.textContent = `${current + 1}/${items.length}`;
 
     modal.classList.add("is-open");
@@ -594,4 +599,3 @@ footer {
 
 </body>
 </html>
-
