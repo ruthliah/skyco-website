@@ -5,108 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Skyco Technology Services</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 /* ===== BACKGROUND ===== */
-#bg-video {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
+#bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(10,10,10,.65);
-  z-index: -1;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(10,10,10,.65);
+  z-index:-1;
 }
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-  color: #fff;
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+  color:#fff;
 }
 
 /* ===== HEADER ===== */
-header {
-  padding: 40px 20px;
-  background: rgba(0,0,0,.7);
+header{
+  padding:40px 20px;
+  background:rgba(0,0,0,.7);
 }
-.navbar {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.logo {
-  font-size: 32px;
-  font-weight: 900;
-  color: #00eaff;
+.logo{
+  font-size:32px;
+  font-weight:900;
+  color:#00eaff;
 }
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:20px;
+  padding:0;
+  margin:0;
 }
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
 }
 
 /* ===== LAYOUT ===== */
-.main-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 68% 32%;
-  gap: 40px;
+.main-container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px;
+  display:grid;
+  grid-template-columns:68% 32%;
+  gap:40px;
 }
-.left-section {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+.left-section{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
 }
 
 /* ===== BOXES ===== */
-.top-boxes {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 15px;
+.top-boxes{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
 }
-.bottom-boxes {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
+.bottom-boxes{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
-.box {
-  background: rgba(255,255,255,.15);
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,234,255,.3);
+.box{
+  background:rgba(255,255,255,.15);
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 0 10px rgba(0,234,255,.3);
 }
-.top-boxes .box { text-align:center; }
-.bottom-boxes .box { text-align:left; }
+.top-boxes .box{text-align:center;}
+.bottom-boxes .box{text-align:left;}
 
-.box img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
+.box img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
 }
-.box p {
-  margin-top: 10px;
-  line-height: 1.6;
+.box p{
+  margin-top:10px;
+  line-height:1.6;
 }
-.bottom-boxes p strong {
+.bottom-boxes p strong{
   display:block;
   color:#00eaff;
   margin-bottom:6px;
@@ -114,20 +114,20 @@ nav a {
 }
 
 /* ===== VIDEOS ===== */
-.right-section {
+.right-section{
   display:flex;
   flex-direction:column;
   gap:15px;
   margin-top:120px;
 }
-.video-box {
-  background: rgba(255,255,255,.15);
+.video-box{
+  background:rgba(255,255,255,.15);
   padding:10px;
   border-radius:12px;
   max-width:340px;
   cursor:pointer;
 }
-.video-box iframe {
+.video-box iframe{
   width:100%;
   height:135px;
   border-radius:10px;
@@ -135,77 +135,78 @@ nav a {
 }
 
 /* ===== MODAL ===== */
-.media-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.9);
+.media-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
   display:none;
   z-index:9999;
   align-items:center;
   justify-content:center;
 }
-.media-modal.is-open { display:flex; }
+.media-modal.is-open{display:flex;}
 
-.media-content {
-  width: min(1100px, 95vw);
+.media-content{
+  width:min(1100px,95vw);
   background:#0b0f14;
   border-radius:16px;
   overflow:hidden;
   position:relative;
 }
-.media-stage {
+.media-stage{
   display:flex;
   align-items:center;
   justify-content:center;
   background:black;
 }
 .media-stage img,
-.media-stage iframe {
+.media-stage iframe{
   max-width:100%;
   max-height:70vh;
 }
-.media-text {
-  padding:18px;
-  line-height:1.6;
+.media-text{
+  padding:20px;
+  line-height:1.7;
+  font-size:16px;
 }
 
 /* ===== CONTROLS ===== */
 .media-close,
 .media-prev,
-.media-next {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
+.media-next{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  width:46px;
+  height:46px;
+  border-radius:50%;
   border:none;
   font-size:24px;
-  background: rgba(255,255,255,.15);
+  background:rgba(255,255,255,.15);
   color:white;
   cursor:pointer;
   z-index:10000;
 }
-.media-close {
+.media-close{
   top:20px;
   right:20px;
   transform:none;
 }
-.media-prev { left:20px; }
-.media-next { right:20px; }
+.media-prev{left:20px;}
+.media-next{right:20px;}
 
 .media-close:hover,
 .media-prev:hover,
-.media-next:hover {
-  background: rgba(255,255,255,.3);
+.media-next:hover{
+  background:rgba(255,255,255,.3);
 }
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
-  .main-container { grid-template-columns:1fr; }
-  .right-section { margin-top:0; align-items:flex-start; }
-  .top-boxes { grid-template-columns: repeat(2,1fr); }
-  .bottom-boxes { grid-template-columns:1fr; }
+  .main-container{grid-template-columns:1fr;}
+  .right-section{margin-top:0;}
+  .top-boxes{grid-template-columns:repeat(2,1fr);}
+  .bottom-boxes{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -230,30 +231,86 @@ nav a {
 </header>
 
 <div class="main-container">
-  <div class="left-section">
+<div class="left-section">
 
-    <h2 style="color:#00eaff;">International Collaboration & Partnership</h2>
+<h2 style="color:#00eaff;">International Collaboration & Partnership</h2>
 
-    <div class="top-boxes">
-      <div class="box"><img data-type="image" data-caption="DJAG Partnership 2019" src="DJAG2.jpg"><p>DJAG Partnership 2019</p></div>
-      <div class="box"><img data-type="image" data-caption="Bomana Prison Visit" src="DJAG3.jpg"><p>Bomana Prison Visit</p></div>
-      <div class="box"><img data-type="image" data-caption="Parliament Presentation" src="DJAG4.jpg"><p>Parliament Presentation</p></div>
-      <div class="box"><img data-type="image" data-caption="International Partner Visit USA" src="DJAG5.jpg"><p>International Partner Visit USA</p></div>
-    </div>
-
-    <div class="bottom-boxes">
-      <div class="box"><img data-type="image" data-caption="VSAT Services" src="image4.jpg"><p><strong>VSAT Services</strong>Reliable satellite connectivity.</p></div>
-      <div class="box"><img data-type="image" data-caption="Web Development" src="webdev.jpg"><p><strong>Web Development</strong>Modern responsive websites.</p></div>
-      <div class="box"><img data-type="image" data-caption="Project Management" src="project.jpg"><p><strong>Project Management</strong>End-to-end delivery.</p></div>
-    </div>
+<div class="top-boxes">
+  <div class="box">
+    <img data-type="image" src="DJAG2.jpg"
+     data-text="Skyco in Partnership with Department of Justice & Attorney General. Interacting with International Collaborators from Israel in 2019.">
+    <p>Skyco in Partnership with Department of Justice & Attorney General. Interacting with International Collaborators from Israel in 2019.</p>
   </div>
 
-  <div class="right-section">
-    <div class="video-box" data-type="video" data-src="https://www.youtube.com/embed/i3nJhMYxBFg"><iframe src="https://www.youtube.com/embed/i3nJhMYxBFg"></iframe></div>
-    <div class="video-box" data-type="video" data-src="https://www.youtube.com/embed/opMDhfnc_ug"><iframe src="https://www.youtube.com/embed/opMDhfnc_ug"></iframe></div>
-    <div class="video-box" data-type="video" data-src="https://www.youtube.com/embed/27W_Opfm-Cc"><iframe src="https://www.youtube.com/embed/27W_Opfm-Cc"></iframe></div>
-    <div class="video-box" data-type="video" data-src="https://www.youtube.com/embed/-ECModkUhkY"><iframe src="https://www.youtube.com/embed/-ECModkUhkY"></iframe></div>
+  <div class="box">
+    <img data-type="image" src="DJAG3.jpg"
+     data-text="2019, Site Visit to Correctional Services Bomana Prison.">
+    <p>2019, Site Visit to Correctional Services Bomana Prison.</p>
   </div>
+
+  <div class="box">
+    <img data-type="image" src="DJAG4.jpg"
+     data-text="Skyco doing Presentation at Parliamentary State Function Room in 2011.">
+    <p>Skyco doing Presentation at Parliamentary State Function Room in 2011.</p>
+  </div>
+
+  <div class="box">
+    <img data-type="image" src="DJAG5.jpg"
+     data-text="Skyco CEO and MD visiting International Partner, Cogent Systems Beyond Comparison in 2009 in Pasadena, California, USA.">
+    <p>Skyco CEO and MD visiting International Partner, Cogent Systems Beyond Comparison in 2009 in Pasadena, California, USA.</p>
+  </div>
+</div>
+
+<div class="bottom-boxes">
+  <div class="box">
+    <img data-type="image" src="image4.jpg"
+     data-text="VSAT Services & Installations — Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations across Papua New Guinea.">
+    <p><strong>VSAT Services & Installations</strong>
+    Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations across Papua New Guinea.</p>
+  </div>
+
+  <div class="box">
+    <img data-type="image" src="webdev.jpg"
+     data-text="Web Development — Skyco specializes in customized, user-friendly, responsive websites that enhance online presence and engagement.">
+    <p><strong>Web Development</strong>
+    Skyco specializes in customized, user-friendly, responsive websites that enhance online presence and engagement.</p>
+  </div>
+
+  <div class="box">
+    <img data-type="image" src="project.jpg"
+     data-text="Project Management — Skyco provides end-to-end project management, ensuring timely, cost-effective, and high-quality delivery.">
+    <p><strong>Project Management</strong>
+    Skyco provides end-to-end project management, ensuring timely, cost-effective, and high-quality delivery.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="right-section">
+  <div class="video-box" data-type="video"
+   data-src="https://www.youtube.com/embed/i3nJhMYxBFg"
+   data-text="Skyco Technology corporate presentation video.">
+   <iframe src="https://www.youtube.com/embed/i3nJhMYxBFg"></iframe>
+  </div>
+
+  <div class="video-box" data-type="video"
+   data-src="https://www.youtube.com/embed/opMDhfnc_ug"
+   data-text="Skyco Technology international collaboration showcase.">
+   <iframe src="https://www.youtube.com/embed/opMDhfnc_ug"></iframe>
+  </div>
+
+  <div class="video-box" data-type="video"
+   data-src="https://www.youtube.com/embed/27W_Opfm-Cc"
+   data-text="Skyco Technology solutions overview.">
+   <iframe src="https://www.youtube.com/embed/27W_Opfm-Cc"></iframe>
+  </div>
+
+  <div class="video-box" data-type="video"
+   data-src="https://www.youtube.com/embed/-ECModkUhkY"
+   data-text="Skyco Technology digital governance systems demonstration.">
+   <iframe src="https://www.youtube.com/embed/-ECModkUhkY"></iframe>
+  </div>
+</div>
 </div>
 
 <!-- MODAL -->
@@ -274,7 +331,7 @@ document.querySelectorAll('[data-type]').forEach(el=>{
   items.push({
     type: el.dataset.type,
     src: el.dataset.src || el.src,
-    caption: el.dataset.caption || ''
+    text: el.dataset.text
   });
 });
 
@@ -289,7 +346,7 @@ function showItem(i){
   stage.innerHTML = item.type === "video"
     ? `<iframe src="${item.src}" allowfullscreen></iframe>`
     : `<img src="${item.src}">`;
-  text.textContent = item.caption;
+  text.textContent = item.text;
   modal.classList.add("is-open");
 }
 
