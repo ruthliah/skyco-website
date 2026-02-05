@@ -8,7 +8,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ===== LIVE VIDEO BACKGROUND ===== */
+* { box-sizing: border-box; }
+html, body { width: 100%; overflow-x: hidden; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+/* ===== BACKGROUND VIDEO ===== */
 #bg-video {
   position: fixed;
   inset: 0;
@@ -17,67 +26,46 @@
   object-fit: cover;
   z-index: -2;
 }
-
-/* Dark overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 10, 0.65);
+  background: rgba(10,10,10,.65);
   z-index: -1;
-}
-
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-  color: #fff;
 }
 
 /* ===== HEADER ===== */
 header {
-  padding: 40px 20px;
   background: rgba(0,0,0,.7);
+  padding: 40px 20px;
 }
-
 .navbar {
   max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
   flex-wrap: wrap;
 }
-
 .logo {
   font-size: 32px;
   font-weight: 900;
   color: #00eaff;
-  text-shadow: 0 0 10px #00eaff, 0 0 20px #008cff;
-  font-family: "Orbitron", Arial, sans-serif;
 }
-
 nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
-
 nav a {
-  color: #fff;
+  color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 8px;
 }
 
-nav a:hover {
-  background: rgba(255,255,255,.08);
-}
-
-/* ===== MAIN LAYOUT ===== */
+/* ===== LAYOUT ===== */
 .main-container {
   max-width: 1200px;
   margin: auto;
@@ -85,152 +73,61 @@ nav a:hover {
   display: grid;
   grid-template-columns: 68% 32%;
   gap: 40px;
-  align-items: flex-start;
 }
 
-.left-section {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-/* ===== TOP 4 BOXES ===== */
-.top-boxes {
+/* ===== BOXES ===== */
+.top-boxes, .bottom-boxes {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
+.top-boxes { grid-template-columns: repeat(4,1fr); }
+.bottom-boxes { grid-template-columns: repeat(3,1fr); }
 
-/* ===== BOTTOM 3 BOXES ===== */
-.bottom-boxes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-/* Common box styling */
 .box {
   background: rgba(255,255,255,.15);
   padding: 15px;
   border-radius: 12px;
-  backdrop-filter: blur(5px);
   box-shadow: 0 0 10px rgba(0,234,255,.3);
 }
-
-.top-boxes .box { text-align: center; }
-.bottom-boxes .box { text-align: left; }
-
-/* TOP images (approved look: show full photo, no cropping) */
-.top-boxes .box img.zoomable {
+.box img {
   width: 100%;
-  height: 180px;
-  object-fit: contain;
-  object-position: center;
-  background: rgba(0,0,0,.35);
-  border-radius: 10px;
-  cursor: pointer;
-  display: block;
-  transition: transform .2s ease, filter .2s ease;
-}
-.top-boxes .box img.zoomable:hover {
-  transform: scale(1.02);
-  filter: brightness(1.05);
-}
-
-/* BOTTOM images (approved size) */
-.bottom-boxes .box img.zoomable {
-  width: 100%;
-  height: 140px;
+  height: 150px;
   object-fit: cover;
-  object-position: center;
   border-radius: 10px;
   cursor: pointer;
-  display: block;
-  transition: transform .2s ease, filter .2s ease;
 }
-.bottom-boxes .box img.zoomable:hover {
-  transform: scale(1.02);
-  filter: brightness(1.05);
-}
-
-/* Text in boxes */
 .box p {
-  margin: 10px 0 0 0;
+  margin-top: 10px;
   line-height: 1.6;
-  color: rgba(255,255,255,.92);
-  font-size: 14.5px;
 }
-
-.bottom-boxes p strong {
+.bottom-boxes strong {
+  color: #00eaff;
   display: block;
-  color: #00eaff;
   margin-bottom: 6px;
-  font-size: 16px;
 }
 
-/* ===== MIDDLE TEXT ===== */
-.middle-text {
-  background: rgba(255,255,255,.1);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,234,255,.18);
-}
-
-.middle-text h2 {
-  color: #00eaff;
-  margin-top: 0;
-}
-
-/* ===== RIGHT SIDE (VIDEOS) ===== */
+/* ===== VIDEOS ===== */
 .right-section {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: flex-end;
   margin-top: 120px;
 }
-
 .video-box {
-  width: 100%;
   max-width: 340px;
   background: rgba(255,255,255,.15);
   padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,234,255,.25);
   cursor: pointer;
-  transition: transform .2s ease, filter .2s ease;
-}
-.video-box:hover {
-  transform: scale(1.02);
-  filter: brightness(1.05);
 }
 .video-box iframe {
   width: 100%;
   height: 135px;
   border-radius: 10px;
-  border: 0;
-  pointer-events: none; /* click opens modal */
+  pointer-events: none;
 }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #08162f;
-  color: #fff;
-  padding: 40px;
-  text-align: center;
-  margin-top: 40px;
-}
-
-.footer-links a {
-  color: #00eaff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-}
-
-.footer-links a:hover { text-decoration: underline; }
-
-/* ===== MODAL (LIGHTBOX) ===== */
+/* ===== MODAL ===== */
 .media-modal {
   position: fixed;
   inset: 0;
@@ -241,116 +138,108 @@ footer {
   justify-content: center;
   padding: 18px;
 }
-
 .media-modal.is-open { display: flex; }
 
 .media-content {
-  width: min(1100px, 95vw);
-  max-height: 92vh;
+  width: min(1100px,95vw);
   background: #0b0f14;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 20px 60px rgba(0,0,0,.6);
   position: relative;
 }
+.media-stage {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.media-stage img,
+.media-stage iframe {
+  max-width: 100%;
+  max-height: 70vh;
+}
+.media-text {
+  padding: 20px;
+  line-height: 1.7;
+}
 
-/* Counter badge */
+/* ===== COUNTER ===== */
 .media-counter {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 10001;
-  background: rgba(0,0,0,.55);
-  border: 1px solid rgba(255,255,255,.12);
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,.6);
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 13px;
-  letter-spacing: .2px;
-  color: rgba(255,255,255,.92);
-  user-select: none;
 }
 
-.media-stage {
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.media-stage img {
-  max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  display: block;
-}
-
-.media-stage iframe {
-  width: 100%;
-  height: min(70vh, 650px);
-  border: 0;
-  display: block;
-}
-
-.media-text {
-  padding: 18px 20px;
-  line-height: 1.7;
-  font-size: 16px;
-  color: rgba(255,255,255,.92);
-  overflow: auto;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-
-/* ===== MODAL CONTROLS ===== */
-.media-close,
+/* ===== CONTROLS (RED + LABELS) ===== */
 .media-prev,
-.media-next {
+.media-next,
+.media-close {
   position: fixed;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,.15);
-  color: #fff;
   cursor: pointer;
   z-index: 10000;
 }
 
+/* Close */
 .media-close {
   top: 16px;
   right: 18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   font-size: 30px;
-  line-height: 46px;
+  background: #00eaff;
+  color: #08162f;
 }
 
+/* Arrows */
 .media-prev,
 .media-next {
   top: 50%;
   transform: translateY(-50%);
-  font-size: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #e60000;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0 10px 25px rgba(230,0,0,.4);
 }
 
 .media-prev { left: 18px; }
 .media-next { right: 18px; }
 
-.media-close:hover,
+/* Labels */
+.media-prev::after,
+.media-next::after {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.media-prev::after { content: "PREV"; }
+.media-next::after { content: "NEXT"; }
+
+/* Hover */
 .media-prev:hover,
-.media-next:hover {
-  background: rgba(255,255,255,.3);
-}
+.media-next:hover { background: #ff0000; }
+.media-close:hover { background: #5ff3ff; }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1000px) {
-  .main-container { grid-template-columns: 1fr; }
-  .right-section { margin-top: 0; align-items: flex-start; }
-  .top-boxes { grid-template-columns: repeat(2, 1fr); }
-  .bottom-boxes { grid-template-columns: 1fr; }
-  .video-box { max-width: 520px; }
-}
-
-@media (max-width: 560px) {
-  .top-boxes { grid-template-columns: 1fr; }
-  .logo { font-size: 26px; }
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .main-container { grid-template-columns:1fr; }
+  .top-boxes { grid-template-columns:repeat(2,1fr); }
+  .bottom-boxes { grid-template-columns:1fr; }
+  .right-section { margin-top:0; }
 }
 </style>
 </head>
@@ -367,8 +256,8 @@ footer {
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Our Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
       </ul>
     </nav>
   </div>
@@ -376,225 +265,72 @@ footer {
 
 <div class="main-container">
 
-  <!-- LEFT SIDE -->
-  <div class="left-section">
+<!-- LEFT -->
+<div>
+  <h2 style="color:#00eaff;">International Collaboration & Partnership</h2>
 
-    <h2 style="color:#00eaff;">International Collaboration & Partnership with Government</h2>
-
-    <div class="top-boxes">
-      <div class="box">
-        <img class="zoomable" data-type="image" src="DJAG2.jpg"
-             data-text="Skyco in Partnership with Department of Justice & Attorney General. Interacting with International Collaborators from Israel in 2019.">
-        <p>Skyco in Partnership with Department of Justice & Attorney General.
-          Interacting with International Collaborators from Israel in 2019.</p>
-      </div>
-
-      <div class="box">
-        <img class="zoomable" data-type="image" src="DJAG3.jpg"
-             data-text="2019, Site Visit to Correctional Services Bomana Prison.">
-        <p>2019, Site Visit to Correctional Services Bomana Prison.</p>
-      </div>
-
-      <div class="box">
-        <img class="zoomable" data-type="image" src="DJAG4.jpg"
-             data-text="Skyco doing Presentation at Parliamentary State Function Room in 2011.">
-        <p>Skyco doing Presentation at Parliamentary State Function Room in 2011.</p>
-      </div>
-
-      <div class="box">
-        <img class="zoomable" data-type="image" src="DJAG5.jpg"
-             data-text="Skyco CEO and MD visting International Partner, Cogent Systems Beyond Comparison in 2009 in Pasadena, California, USA. Standing Left, Dr Bruno Lassus, Deputy Vice President. Standing Right is the Founder and President Mr.Ming">
-        <p>Skyco CEO and MD visting International Partner, Cogent Systems
-          Beyond Comparison in 2009 in Pasadena, California, USA. Standing Left, Dr Bruno Lassus, Deputy
-          Vice President. Standing Right is the Founder and President Mr.Ming</p>
-      </div>
-    </div>
-
-    <div class="middle-text">
-      <h2>Our Core Services</h2>
-      <p>
-        Skyco Technology Limited delivers cutting-edge digital solutions including
-        biometric systems, secure data management, electronic voting platforms,
-        and digital governance tools. We work with globally accredited partners
-        to ensure reliability, transparency, and trust in all our systems.
-      </p>
-    </div>
-
-    <div class="bottom-boxes">
-      <div class="box">
-        <img class="zoomable" data-type="image" src="image4.jpg"
-             data-text="VSAT Services & Installations — Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.">
-        <p><strong>VSAT Services & Installations</strong><br>
-          Skyco delivers reliable VSAT solutions, including installation of satellite communication systems, servers, and network infrastructure. We enable secure, high-speed connectivity for remote locations, ensuring seamless communication and data access for businesses and organizations across Papua New Guinea.
-        </p>
-      </div>
-
-      <div class="box">
-        <img class="zoomable" data-type="image" src="webdev.jpg"
-             data-text="Web Development — Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.">
-        <p><strong>Web Development</strong><br>
-          Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.
-        </p>
-      </div>
-
-      <div class="box">
-        <img class="zoomable" data-type="image" src="project.jpg" alt="Project Management"
-             data-text="Project Management — Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.">
-        <p><strong>Project Management</strong><br>
-          Skyco offers comprehensive project management and consultation services for technology-driven initiatives. Our team can oversee the full project lifecycle—from planning and resource allocation to execution and delivery—ensuring projects are completed on time, within budget, and to the highest standards. We provide tailored solutions, risk management, stakeholder coordination, and expert advice to help clients achieve successful outcomes in ICT, digital transformation, and biometric system deployments.
-        </p>
-      </div>
-    </div>
-
+  <div class="top-boxes">
+    <div class="box"><img data-type="image" src="DJAG2.jpg" data-text="Skyco in Partnership with Department of Justice & Attorney General. Interacting with International Collaborators from Israel in 2019."><p>Skyco in Partnership with Department of Justice & Attorney General. Interacting with International Collaborators from Israel in 2019.</p></div>
+    <div class="box"><img data-type="image" src="DJAG3.jpg" data-text="2019, Site Visit to Correctional Services Bomana Prison."><p>2019, Site Visit to Correctional Services Bomana Prison.</p></div>
+    <div class="box"><img data-type="image" src="DJAG4.jpg" data-text="Skyco doing Presentation at Parliamentary State Function Room in 2011."><p>Skyco doing Presentation at Parliamentary State Function Room in 2011.</p></div>
+    <div class="box"><img data-type="image" src="DJAG5.jpg" data-text="Skyco CEO and MD visiting International Partner Cogent Systems in Pasadena, USA."><p>Skyco CEO and MD visiting International Partner Cogent Systems in Pasadena, USA.</p></div>
   </div>
 
-  <!-- RIGHT SIDE (YOUTUBE VIDEOS) -->
-  <div class="right-section">
-    <div class="video-box" data-type="video"
-         data-src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb"
-         data-text="YouTube Video 1 — Skyco Technology presentation.">
-      <iframe src="https://www.youtube.com/embed/i3nJhMYxBFg?si=qaIsD0CdKDNUU5fb"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-    </div>
-
-    <div class="video-box" data-type="video"
-         data-src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg"
-         data-text="YouTube Video 2 — Skyco Technology showcase.">
-      <iframe src="https://www.youtube.com/embed/opMDhfnc_ug?si=zgONWI0Z_DVamalg"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-    </div>
-
-    <div class="video-box" data-type="video"
-         data-src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj"
-         data-text="YouTube Video 3 — Skyco Technology solutions overview.">
-      <iframe src="https://www.youtube.com/embed/27W_Opfm-Cc?si=bmVWBfg3rrbevJXj"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-    </div>
-
-    <div class="video-box" data-type="video"
-         data-src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL"
-         data-text="YouTube Video 4 — Skyco Technology systems demo.">
-      <iframe src="https://www.youtube.com/embed/-ECModkUhkY?si=QEcu9QptopBbWflL"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-    </div>
+  <div class="bottom-boxes">
+    <div class="box"><img data-type="image" src="image4.jpg" data-text="VSAT Services & Installations full description here."><p><strong>VSAT Services & Installations</strong>Skyco delivers reliable VSAT solutions including satellite communications and infrastructure.</p></div>
+    <div class="box"><img data-type="image" src="webdev.jpg" data-text="Web Development full description here."><p><strong>Web Development</strong>Custom, responsive websites tailored to your business needs.</p></div>
+    <div class="box"><img data-type="image" src="project.jpg" data-text="Project Management full description here."><p><strong>Project Management</strong>End-to-end ICT project delivery and consulting.</p></div>
   </div>
+</div>
+
+<!-- RIGHT -->
+<div class="right-section">
+  <div class="video-box" data-type="video" data-src="https://www.youtube.com/embed/i3nJhMYxBFg" data-text="Skyco presentation video."><iframe src="https://www.youtube.com/embed/i3nJhMYxBFg"></iframe></div>
+  <div class="video-box" data-type="video" data-src="https://www.youtube.com/embed/opMDhfnc_ug" data-text="International collaboration showcase."><iframe src="https://www.youtube.com/embed/opMDhfnc_ug"></iframe></div>
+</div>
 
 </div>
 
-<footer>
-  <h3>Contact Us</h3>
-  <div class="footer-links">
-    <!-- ✅ Updated email: opens user's email app -->
-    <a href="mailto:skycotechnology667@gmail.com"><i class="fa fa-envelope"></i> skycotechnology667@gmail.com</a>
-
-    <!-- WhatsApp left as placeholder -->
-    <a href="https://wa.me/675XXXXXXXX"><i class="fa fa-whatsapp"></i> WhatsApp</a>
-
-    <!-- ✅ Updated LinkedIn: opens your profile -->
-    <a href="https://www.linkedin.com/in/ruthleey-kile-863966211" target="_blank" rel="noopener noreferrer">
-      <i class="fa fa-linkedin"></i> LinkedIn
-    </a>
-  </div>
-  <p>&copy; 2026 Skyco Technology Limited</p>
-</footer>
-
 <!-- MODAL -->
-<div class="media-modal" id="mediaModal" aria-hidden="true">
-  <button class="media-close" id="closeBtn" aria-label="Close">&times;</button>
-  <button class="media-prev" id="prevBtn" aria-label="Previous">&#10094;</button>
-  <button class="media-next" id="nextBtn" aria-label="Next">&#10095;</button>
+<div class="media-modal" id="mediaModal">
+  <button class="media-close" id="closeBtn">&times;</button>
+  <button class="media-prev" id="prevBtn">&#10094;</button>
+  <button class="media-next" id="nextBtn">&#10095;</button>
 
-  <div class="media-content" role="dialog" aria-modal="true">
-    <div class="media-counter" id="mediaCounter">1/1</div>
+  <div class="media-content">
+    <div class="media-counter" id="mediaCounter"></div>
     <div class="media-stage" id="mediaStage"></div>
     <div class="media-text" id="mediaText"></div>
   </div>
 </div>
 
 <script>
-  // Build ordered gallery from everything that has data-type (images + videos)
-  const nodes = Array.from(document.querySelectorAll('[data-type]'));
-  const items = nodes.map((el) => ({
-    type: el.dataset.type,
-    src: el.dataset.src || el.getAttribute('src'),
-    text: el.dataset.text || ''
-  }));
+const nodes = [...document.querySelectorAll('[data-type]')];
+const items = nodes.map(el=>({
+  type: el.dataset.type,
+  src: el.dataset.src || el.src,
+  text: el.dataset.text
+}));
+let current=0;
+const modal=document.getElementById('mediaModal');
+const stage=document.getElementById('mediaStage');
+const text=document.getElementById('mediaText');
+const counter=document.getElementById('mediaCounter');
 
-  let current = 0;
-
-  const modal = document.getElementById("mediaModal");
-  const stage = document.getElementById("mediaStage");
-  const text = document.getElementById("mediaText");
-  const counter = document.getElementById("mediaCounter");
-
-  function showItem(index) {
-    current = (index + items.length) % items.length;
-    const item = items[current];
-
-    // Replace content (stops video audio when moving next/prev)
-    stage.innerHTML = "";
-
-    if (item.type === "video") {
-      stage.innerHTML =
-        `<iframe src="${item.src}" title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen></iframe>`;
-    } else {
-      stage.innerHTML = `<img src="${item.src}" alt="">`;
-    }
-
-    text.textContent = item.text;
-    counter.textContent = `${current + 1}/${items.length}`;
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    stage.innerHTML = ""; // stops video
-    text.textContent = "";
-    counter.textContent = "";
-    document.body.style.overflow = "";
-  }
-
-  // Click any item to open
-  nodes.forEach((el, idx) => {
-    el.addEventListener("click", () => showItem(idx));
-  });
-
-  // Controls
-  document.getElementById("closeBtn").addEventListener("click", closeModal);
-  document.getElementById("prevBtn").addEventListener("click", () => showItem(current - 1));
-  document.getElementById("nextBtn").addEventListener("click", () => showItem(current + 1));
-
-  // Click outside content closes
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  // Keyboard navigation
-  document.addEventListener("keydown", (e) => {
-    if (!modal.classList.contains("is-open")) return;
-    if (e.key === "Escape") closeModal();
-    if (e.key === "ArrowLeft") showItem(current - 1);
-    if (e.key === "ArrowRight") showItem(current + 1);
-  });
+function showItem(i){
+  current=(i+items.length)%items.length;
+  const it=items[current];
+  stage.innerHTML = it.type==="video"
+    ? `<iframe src="${it.src}" allowfullscreen></iframe>`
+    : `<img src="${it.src}">`;
+  text.textContent=it.text;
+  counter.textContent=`${current+1}/${items.length}`;
+  modal.classList.add('is-open');
+}
+nodes.forEach((el,i)=>el.onclick=()=>showItem(i));
+document.getElementById('closeBtn').onclick=()=>modal.classList.remove('is-open');
+document.getElementById('prevBtn').onclick=()=>showItem(current-1);
+document.getElementById('nextBtn').onclick=()=>showItem(current+1);
 </script>
 
 </body>
