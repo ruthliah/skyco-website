@@ -167,10 +167,10 @@ nav a:hover { background: rgba(255,255,255,.08); }
   filter: brightness(1.05);
 }
 
-/* ✅ ONLY Web Development image: force full cover (no empty space) */
+/* ✅ ONLY Web Development image: keep FULL cover, but shift crop UP so your face shows */
 .bottom-boxes .box img.zoomable.web-fill {
   object-fit: cover !important;
-  object-position: center;
+  object-position: 50% 15% !important; /* ✅ ONLY CHANGE: moved focus upward */
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
@@ -465,7 +465,6 @@ footer {
       </div>
 
       <div class="box">
-        <!-- ✅ ONLY CHANGE: added class "web-fill" -->
         <img class="zoomable web-fill" data-type="image" src="ChatGPT Image Feb 7, 2026, 01_20_01 PM.png"
              data-text="Web Development — Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.">
         <p><strong>Web Development</strong><br>
