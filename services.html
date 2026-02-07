@@ -155,8 +155,9 @@ nav a:hover { background: rgba(255,255,255,.08); }
 .bottom-boxes .box img.zoomable {
   width: 100%;
   height: 140px;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;            /* ✅ CHANGED: was cover */
+  object-position: center;        /* ✅ keep centered */
+  background: rgba(0,0,0,.30);    /* ✅ so empty space looks neat */
   border-radius: 10px;
   cursor: pointer;
   display: block;
@@ -719,4 +720,3 @@ footer {
 
 </body>
 </html>
-
