@@ -155,9 +155,8 @@ nav a:hover { background: rgba(255,255,255,.08); }
 .bottom-boxes .box img.zoomable {
   width: 100%;
   height: 140px;
-  object-fit: contain;            /* ✅ CHANGED: was cover */
-  object-position: center;        /* ✅ keep centered */
-  background: rgba(0,0,0,.30);    /* ✅ so empty space looks neat */
+  object-fit: cover;
+  object-position: center;
   border-radius: 10px;
   cursor: pointer;
   display: block;
@@ -166,6 +165,12 @@ nav a:hover { background: rgba(255,255,255,.08); }
 .bottom-boxes .box img.zoomable:hover {
   transform: scale(1.02);
   filter: brightness(1.05);
+}
+
+/* ✅ ONLY Web Development image: force full cover (no empty space) */
+.bottom-boxes .box img.zoomable.web-fill {
+  object-fit: cover !important;
+  object-position: center;
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
@@ -460,7 +465,8 @@ footer {
       </div>
 
       <div class="box">
-        <img class="zoomable" data-type="image" src="ChatGPT Image Feb 7, 2026, 01_20_01 PM.png"
+        <!-- ✅ ONLY CHANGE: added class "web-fill" -->
+        <img class="zoomable web-fill" data-type="image" src="ChatGPT Image Feb 7, 2026, 01_20_01 PM.png"
              data-text="Web Development — Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.">
         <p><strong>Web Development</strong><br>
           Skyco specializes in creating customized, user-friendly websites tailored to each client's unique needs. We design and develop modern, responsive sites that help businesses and organizations establish a strong online presence, improve engagement, and reach their target audience effectively.
