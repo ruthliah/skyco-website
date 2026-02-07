@@ -36,9 +36,11 @@ body::before {
 
 /* ===== HEADER ===== */
 header {
-  padding: 40px 20px;
+  padding: 18px 16px;           /* ✅ smaller + cleaner */
   background: rgba(0,0,0,.7);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
 }
+
 .navbar {
   max-width: 1200px;
   margin: auto;
@@ -48,29 +50,94 @@ header {
   gap: 14px;
   flex-wrap: wrap;
 }
+
 .logo {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 900;
   color: #00eaff;
   text-shadow: 0 0 10px #00eaff, 0 0 20px #008cff;
-  font-family: "Orbitron", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif; /* ✅ avoid missing Orbitron issues */
 }
-nav ul {
+
+/* ✅ NAV FIX (this is the main fix) */
+nav { position: relative; }
+
+/* top-level menu only */
+nav > ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 14px;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;
+  align-items: center;
 }
+
+/* each top item */
+nav > ul > li {
+  position: relative;  /* ✅ needed for dropdown positioning */
+}
+
 nav a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 8px;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-radius: 10px;
+  display: inline-block;
+  white-space: nowrap;
+  transition: background .2s ease, transform .2s ease;
 }
-nav a:hover { background: rgba(255,255,255,.08); }
+
+nav a:hover {
+  background: rgba(255,255,255,.10);
+  transform: translateY(-1px);
+}
+
+/* dropdown menu */
+nav ul ul {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  min-width: 230px;
+  background: rgba(11, 24, 92, 0.96);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: 8px 0;
+  display: none;              /* ✅ hidden by default */
+  z-index: 999;
+  box-shadow: 0 16px 35px rgba(0,0,0,.45);
+}
+
+nav ul ul li {
+  list-style: none;
+}
+
+nav ul ul a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 0;
+  white-space: normal;
+}
+
+nav ul ul a:hover {
+  background: rgba(0,234,255,.16);
+}
+
+/* show dropdown on hover (desktop) */
+nav > ul > li:hover > ul {
+  display: block;
+}
+
+/* ✅ Mobile: keep menu clean and stop dropdown chaos */
+@media (max-width: 820px) {
+  nav > ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  nav ul ul {
+    display: none !important; /* ✅ disables dropdown on phone */
+  }
+}
 
 /* ===== MAIN LAYOUT ===== */
 .main-container {
@@ -170,7 +237,7 @@ nav a:hover { background: rgba(255,255,255,.08); }
 /* ✅ ONLY Web Development image: keep FULL cover, but shift crop UP so your face shows */
 .bottom-boxes .box img.zoomable.web-fill {
   object-fit: cover !important;
-  object-position: 50% 15% !important; /* ✅ ONLY CHANGE: moved focus upward */
+  object-position: 50% 15% !important;
 }
 
 /* ===== RIGHT SIDE (VIDEOS) ===== */
@@ -200,7 +267,7 @@ nav a:hover { background: rgba(255,255,255,.08); }
   height: 135px;
   border-radius: 10px;
   border: 0;
-  pointer-events: none; /* click opens modal */
+  pointer-events: none;
 }
 
 /* ===== FOOTER ===== */
@@ -257,15 +324,13 @@ footer {
   user-select: none;
 }
 
-/* Stage is relative so arrows sit ON media only */
 .media-stage {
   position: relative;
   background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Helpful hint for mobile swipe */
-  touch-action: pan-y; /* allow vertical scroll in text, but we handle horizontal swipe */
+  touch-action: pan-y;
 }
 
 .media-stage img {
@@ -291,7 +356,6 @@ footer {
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
-/* Close button (top right) */
 .media-close {
   position: fixed;
   top: 16px;
@@ -315,10 +379,10 @@ footer {
 /* ===== SMALL ARROWS INSIDE MEDIA ONLY (AUTO-HIDE) ===== */
 .media-prev,
 .media-next {
-  position: absolute;              /* ✅ inside media-stage only */
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 38px;                     /* ✅ smaller */
+  width: 38px;
   height: 38px;
   border-radius: 50%;
   border: none;
@@ -331,54 +395,30 @@ footer {
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 16px rgba(0,0,0,.45);
-  opacity: 0;                      /* ✅ hidden by default */
-  pointer-events: none;            /* ✅ can't click while hidden */
+  opacity: 0;
+  pointer-events: none;
   transition: opacity .18s ease, transform .18s ease, background .18s ease;
 }
 .media-prev { left: 10px; }
 .media-next { right: 10px; }
 
-.media-prev::after,
-.media-next::after {
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 9px;
-  letter-spacing: 1px;
-  font-weight: 800;
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,.65);
-  opacity: .95;
-}
-.media-prev::after { content: "PREV"; }
-.media-next::after { content: "NEXT"; }
-
-/* When controls are visible */
 .media-stage.show-controls .media-prev,
 .media-stage.show-controls .media-next {
   opacity: 1;
   pointer-events: auto;
 }
-.media-stage.show-controls .media-prev:hover,
-.media-stage.show-controls .media-next:hover {
-  background: rgba(255,0,0,1);
-  transform: translateY(-50%) scale(1.08);
-}
 
-/* Mobile: slightly bigger tap area, still not covering text */
 @media (max-width: 700px) {
   .media-prev, .media-next {
     width: 44px;
     height: 44px;
     font-size: 20px;
   }
-  .media-prev::after, .media-next::after { bottom: -18px; }
 }
 
-/* ===== RESPONSIVE (KEEP YOUR ORIGINAL MOBILE LOOK) ===== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1000px) {
-  .main-container { grid-template-columns: 1fr; }
+  .main-container { grid-template-columns: 1fr; padding: 22px; }
   .right-section { margin-top: 0; align-items: flex-start; }
   .top-boxes { grid-template-columns: repeat(2, 1fr); }
   .bottom-boxes { grid-template-columns: 1fr; }
@@ -399,31 +439,30 @@ footer {
 <header>
   <div class="navbar">
     <div class="logo">SKYCO TECHNOLOGY LIMITED</div>
-   <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
 
-    <li>
-      <a href="about.html">About Us</a>
+    <nav>
       <ul>
-        <li><a href="about.html#history">History</a></li>
-        <li><a href="about.html#background">Background</a></li>
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="about.html">About Us</a>
+          <ul>
+            <li><a href="about.html#history">History</a></li>
+            <li><a href="about.html#background">Background</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="services.html">Our Services</a>
+          <ul>
+            <li><a href="services.html#capabilities">International Collaboration</a></li>
+            <li><a href="services.html#recent">Our Core Services</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    </li>
-
-    <li>
-      <a href="services.html">Our Services</a>
-      <ul>
-        <li><a href="services.html#capabilities">International Collaboration</a></li>
-        <li><a href="services.html#recent">Our Core Services</a></li>
-      </ul>
-    </li>
-
-    <!-- ✅ CONTACT PAGE -->
-    <li><a href="contact.html">Contact</a></li>
-
-  </ul>
-</nav>
+    </nav>
 
   </div>
 </header>
@@ -566,7 +605,6 @@ footer {
   <div class="media-content" role="dialog" aria-modal="true">
     <div class="media-counter" id="mediaCounter">1/1</div>
 
-    <!-- ✅ arrows are INSIDE mediaStage so they NEVER cover text -->
     <div class="media-stage" id="mediaStage">
       <button class="media-prev" id="prevBtn" aria-label="Previous">&#10094;</button>
       <button class="media-next" id="nextBtn" aria-label="Next">&#10095;</button>
@@ -577,7 +615,6 @@ footer {
 </div>
 
 <script>
-  // Build ordered gallery from everything that has data-type (images + videos)
   const nodes = Array.from(document.querySelectorAll('[data-type]'));
   const items = nodes.map((el) => ({
     type: el.dataset.type,
@@ -595,7 +632,6 @@ footer {
   const nextBtn = document.getElementById("nextBtn");
   const closeBtn = document.getElementById("closeBtn");
 
-  // ===== Auto-hide controls =====
   let hideTimer = null;
 
   function showControlsTemporarily() {
@@ -612,10 +648,7 @@ footer {
     hideTimer = null;
   }
 
-  // ===== Rendering =====
   function renderStage(item) {
-    // Keep arrows in stage; replace only the media element
-    // Remove any existing media nodes (img/iframe) but keep buttons
     const existingMedia = stage.querySelector("img, iframe");
     if (existingMedia) existingMedia.remove();
 
@@ -626,7 +659,7 @@ footer {
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.allowFullscreen = true;
-      stage.insertBefore(iframe, nextBtn); // place before next button
+      stage.insertBefore(iframe, nextBtn);
     } else {
       const img = document.createElement("img");
       img.src = item.src;
@@ -647,7 +680,6 @@ footer {
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 
-    // Start with arrows hidden, show briefly so user learns they exist
     hideControlsNow();
     showControlsTemporarily();
   }
@@ -656,7 +688,6 @@ footer {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
 
-    // Stop video/audio by removing iframe
     const existingMedia = stage.querySelector("img, iframe");
     if (existingMedia) existingMedia.remove();
 
@@ -666,7 +697,6 @@ footer {
     hideControlsNow();
   }
 
-  // ===== Controls =====
   function goPrev() { showItem(current - 1); }
   function goNext() { showItem(current + 1); }
 
@@ -674,24 +704,18 @@ footer {
   nextBtn.addEventListener("click", (e) => { e.stopPropagation(); goNext(); });
   closeBtn.addEventListener("click", closeModal);
 
-  // Click outside content closes
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
 
-  // Click/tap on the media area toggles controls (auto-hide after)
   stage.addEventListener("click", (e) => {
-    // If user taps the image/video area, show controls temporarily
-    // (If they tap a button, button handler already runs)
     if (e.target === stage || e.target.tagName === "IMG" || e.target.tagName === "IFRAME") {
       showControlsTemporarily();
     }
   });
 
-  // On desktop mouse movement over stage also reveals controls briefly
   stage.addEventListener("mousemove", () => showControlsTemporarily());
 
-  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (!modal.classList.contains("is-open")) return;
     if (e.key === "Escape") closeModal();
@@ -699,12 +723,10 @@ footer {
     if (e.key === "ArrowRight") goNext();
   });
 
-  // Open on click any image/video tile
   nodes.forEach((el, idx) => {
     el.addEventListener("click", () => showItem(idx));
   });
 
-  // ===== Swipe left/right on mobile =====
   let touchStartX = 0;
   let touchStartY = 0;
   let isTouching = false;
@@ -716,8 +738,6 @@ footer {
     isTouching = true;
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
-
-    // show controls briefly when user touches
     showControlsTemporarily();
   }, { passive: true });
 
@@ -731,17 +751,14 @@ footer {
     const dx = changed.clientX - touchStartX;
     const dy = changed.clientY - touchStartY;
 
-    // Only trigger if horizontal swipe is strong and larger than vertical
     const absX = Math.abs(dx);
     const absY = Math.abs(dy);
 
-    if (absX < 55 || absX < absY) return; // threshold
+    if (absX < 55 || absX < absY) return;
 
     if (dx < 0) goNext(); else goPrev();
   }, { passive: true });
-
 </script>
 
 </body>
 </html>
-
