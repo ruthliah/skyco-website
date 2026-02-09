@@ -233,6 +233,9 @@
     }
     .row a:hover { text-decoration: underline; }
 
+    /* ✅ (small helper so icon link looks identical) */
+    .row a.icon-link { text-decoration: none; }
+
     /* Contact Buttons */
     .actions {
       display: flex;
@@ -363,7 +366,10 @@
 
         <div class="info">
           <div class="row">
-            <i class="fa-solid fa-envelope"></i>
+            <!-- ✅ FIX: icon is now clickable mailto -->
+            <a class="icon-link" href="mailto:contact@skycotechnology.com" aria-label="Email Skyco">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
             <div>
               <div class="label">Email</div>
               <a href="mailto:contact@skycotechnology.com">contact@skycotechnology.com</a>
